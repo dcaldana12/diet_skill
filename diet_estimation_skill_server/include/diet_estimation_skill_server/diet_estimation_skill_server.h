@@ -83,14 +83,14 @@ namespace diet_estimation_skill {
 
         bool preload_ok_;
         int number_of_candidates_ = 0;
-        std::string patient_name_;
+        std::string patient_name_, prev_patient_name_;
 
         bool loadEstimationPipeline ();
         bool readDataCandidatesFromParameterServer() ;
         bool executeProcess (int _operation_mode);
         bool executeDirectProcess ();
-       // bool executePreLoad ();
-       // bool executeStandaloneProcess ();
+        bool executePreLoad ();
+        bool executeStandaloneProcess ();
         bool getNumberOfCandidates();
         bool checkNamespace (std::string _input);
         bool runMethods () ;

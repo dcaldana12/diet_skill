@@ -34,6 +34,7 @@ namespace diet_estimation_skill {
         ROS_INFO_STREAM("Name : " << goal->name);
 
         patient_name_ = goal->name;
+        prev_patient_name_ = patient_name_;
 
         executeProcess(goal->operation_mode) ? setSucceeded() : setAborted();
     }
@@ -109,6 +110,13 @@ namespace diet_estimation_skill {
         feedback (0);
         if (_operation_mode == OPERATION_MODE::DIRECT){ //Load and Run the Pipeline
             return (executeDirectProcess());
+        } else if (_operation_mode == OPERATION_MODE::PRE_LOAD){ //Load the pipeline
+            return (loadEstimationPipeline());
+        } else if (_operation_mode == OPERATION_MODE::STANDALONE_RUN){ //Run the pipeline
+            return (readDataCandidatesFromParameterServer() && runMethods() && getResult());
+        } else {
+            ROS_ERROR_STREAM("Operation mode not supported.");
+            return false;
         }
 
         return true;
@@ -128,6 +136,36 @@ namespace diet_estimation_skill {
             ||   !getResult()
             )
         {return false;}    
+
+
+        return true;
+    }
+
+    /// <summary>
+    /// Load the processing pipeline
+    /// </summary>
+    /// <returns>true if succeeded to load the pipeline, otherwise false </returns>
+    bool DietEstimationSkill::executePreLoad () {
+        
+        if (    !getNumberOfCandidates ()
+            ||  !loadEstimationPipeline ()
+            ||  !readDataCandidatesFromParameterServer ()
+            ) 
+        {return false;}
+
+
+        return true;
+    }
+
+    /// <summary>
+    /// Execute the standalone run mode
+    /// </summary>
+    /// <returns>true if succeeded, otherwise false </returns>
+    bool DietEstimationSkill::executeStandaloneProcess () {
+        if (    !runMethods ()
+            ||  !getResult ()
+            ) 
+        {return false;}
 
 
         return true;
@@ -208,6 +246,8 @@ namespace diet_estimation_skill {
         XmlRpc::XmlRpcValue xml_param;
         std::string         configuration_namespace =
                 private_node_handle_->getNamespace() + "/" + patient_name_;
+        
+        prev_patient_name_ = patient_name_;
         ROS_DEBUG_STREAM("Config_ns to load pipelines: " << configuration_namespace<< " ");
         if (private_node_handle_->getParam(configuration_namespace, xml_param) &&
             xml_param.getType() == XmlRpc::XmlRpcValue::TypeStruct) {
@@ -303,7 +343,11 @@ namespace diet_estimation_skill {
     /// </summary>
     /// <returns>true if the heuristic run correctly, otherwise false </returns>
     bool DietEstimationSkill::runMethods () {
-
+        
+        if ( prev_patient_name_ != patient_name_ ) {
+            ROS_ERROR_STREAM("Unable to run pipeline. Please, execute pre-load of the pipeline.");
+            return false;
+        }
 
         for (size_t i = 0; i < estimationPipelineArrPtr_->size(); ++i) {
 
