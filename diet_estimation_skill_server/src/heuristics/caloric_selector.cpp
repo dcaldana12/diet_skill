@@ -51,7 +51,10 @@ namespace diet_estimation_skill {
             previous_scores_arr_.push_back(std::get<2>(*it));
 
             if( !std::get<1>(*it) ) {
-                caloric_value_arr_.push_back((double) std::get<0>(*it).fat_rate * std::get<0>(*it).gram);
+                //caloric_value_arr_.push_back((double) std::get<0>(*it).fat_rate * std::get<0>(*it).gram);
+                caloric_value_arr_.push_back((double) std::get<0>(*it).protein_rate * (double) std::get<0>(*it).gram * protein_cal_per_gram_ +
+                                             (double) std::get<0>(*it).fat_rate * (double) std::get<0>(*it).gram * fat_cal_per_gram_ +
+                                             (double) std::get<0>(*it).fiber_rate * (double) std::get<0>(*it).gram * fiber_cal_per_gram_);
                 if(caloric_value_arr_.back() < threshold_) {
                     extrapolation_arr_.back() = true;
                     std::get<1>(*it) = true;

@@ -169,6 +169,8 @@ namespace diet_estimation_skill {
                     method.reset(new FiberSelector());
                 } else if (method_name == "fat_scorer") {
                     method.reset(new FatSelector());
+                } else if (method_name == "caloric_scorer") {
+                    method.reset(new CaloricSelector());
                 } else {
                     ROS_ERROR_STREAM("Method name " << method_name << " is not supported by the server.");
                 }
@@ -261,6 +263,7 @@ namespace diet_estimation_skill {
             private_node_handle_->param(base_tree + "/gram", candidate.gram,1.0);
             private_node_handle_->param(base_tree + "/protein_rate", candidate.protein_rate,1.0);
             private_node_handle_->param(base_tree + "/fiber_rate", candidate.fiber_rate,1.0);
+            private_node_handle_->param(base_tree + "/fat_rate", candidate.fat_rate, 1.0);
 
 
 
@@ -271,7 +274,8 @@ namespace diet_estimation_skill {
             ROS_DEBUG_STREAM(
                     current_candidate + " added: [Name: " << candidate.food_name <<
                                         " \n: Protein rate: " << candidate.protein_rate <<
-                                        " \n: Fiber Rate" << candidate.fiber_rate << "]");
+                                        " \n: Fiber Rate: " << candidate.fiber_rate <<
+                                        " \n: Fat Rate: " << candidate.fat_rate << "]");
         }
 
         feedback (30);

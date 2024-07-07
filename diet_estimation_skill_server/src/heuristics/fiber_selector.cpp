@@ -46,7 +46,6 @@ namespace diet_estimation_skill {
         {
             //ROS_DEBUG_STREAM(std::get<0>(*it));
 
-
             extrapolation_arr_.push_back(std::get<1>(*it));
             previous_scores_arr_.push_back(std::get<2>(*it));
 

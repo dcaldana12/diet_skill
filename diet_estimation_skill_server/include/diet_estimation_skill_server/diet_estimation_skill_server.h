@@ -13,6 +13,7 @@
 #include <diet_estimation_skill_server/heuristics/protein_selector.h>
 #include <diet_estimation_skill_server/heuristics/fiber_selector.h>
 #include <diet_estimation_skill_server/heuristics/fat_selector.h>
+#include <diet_estimation_skill_server/heuristics/caloric_selector.h>
 
 
 
