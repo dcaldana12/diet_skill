@@ -167,8 +167,9 @@ namespace diet_estimation_skill {
                     method.reset(new ProteinSelector());
                 } else if (method_name == "fiber_scorer") {
                     method.reset(new FiberSelector());
-                }
-                else{
+                } else if (method_name == "fat_scorer") {
+                    method.reset(new FatSelector());
+                } else {
                     ROS_ERROR_STREAM("Method name " << method_name << " is not supported by the server.");
                 }
 
