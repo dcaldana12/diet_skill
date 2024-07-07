@@ -42,6 +42,8 @@ add_library(${PROJECT_NAME}
         src/diet_estimation_base.cpp
             src/heuristics/protein_selector.cpp
             src/heuristics/fiber_selector.cpp
+            src/heuristics/fat_selector.cpp
+            src/heuristics/caloric_selector.cpp
         )
 
 ## Set dependencies of the library
