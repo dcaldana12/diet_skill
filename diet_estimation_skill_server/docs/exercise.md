@@ -3,15 +3,15 @@
 
 Bellow is proposed a list of implementation that should be performed in order.
 
-## 1. New food entry
+## 1. New food entry (Done)
 
 Create a new food candidate into the "Fulano" diet list (aka food dataset).
 
-## 2. Creating a new pipeline
+## 2. Creating a new pipeline (Done)
 
 "Fulano" is the patient used for this example. Now, create the "Cicrano" pipeline configuration different from Fulano and run both pipelines just by changing the goal parameter.
 
-## 3. Fat scorer heuristic implementation
+## 3. Fat scorer heuristic implementation (Done)
 Implement a fat scorer heuristic using the polymorphism presented in current package.
 This heuristic should score food according to its fat level, priority to less fat foods!
 The heuristic yaml description should be defined as follows:
