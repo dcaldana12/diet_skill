@@ -5,3 +5,6 @@ pipeline:
     1_fiber_scorer:
         weight: 3
         threshold: 1 #in grams
+    2_fat_scorer:
+        weight: 2
+        threshold: 1 #in grams

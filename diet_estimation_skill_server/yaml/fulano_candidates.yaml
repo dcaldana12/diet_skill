@@ -22,3 +22,9 @@ candidate_3:
   protein_rate: 0.2
   fat_rate: 0.5
   fiber_rate: 0.3
+candidate_4:
+  gram: 200
+  food_name: 'chicken'
+  protein_rate: 0.4
+  fat_rate: 0.2
+  fiber_rate: 0.1
