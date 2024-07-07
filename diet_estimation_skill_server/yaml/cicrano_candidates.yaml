@@ -1,0 +1,30 @@
+candidate_0:
+  food_name: 'peach'
+  gram: 100
+  protein_rate: 0.2
+  fat_rate: 0.3
+  fiber_rate: 0.5
+candidate_1:
+  food_name: 'bacalhau'
+  gram: 200
+  protein_rate: 0.3
+  fat_rate: 0.6
+  fiber_rate: 0.2
+candidate_2:
+  gram: 300
+  food_name: 'pineapple'
+  protein_rate: 0.15
+  fat_rate: 0.8
+  fiber_rate: 0.4
+candidate_3:
+  gram: 10
+  food_name: 'lettuce'
+  protein_rate: 0.2
+  fat_rate: 0.5
+  fiber_rate: 0.5
+candidate_4:
+  gram: 200
+  food_name: 'bife'
+  protein_rate: 0.4
+  fat_rate: 0.2
+  fiber_rate: 0.5
