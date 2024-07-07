@@ -22,7 +22,7 @@ The heuristic yaml description should be defined as follows:
         threshold: 10 #in grams
 ```
 
-## 4. Caloric heuristic implementation
+## 4. Caloric heuristic implementation (Done)
 
 Implement a caloric scorer heuristic using the polymorphism presented in current package. 
 This heuristic should score food according to its caloric level, priority to less caloric food!
