@@ -45,7 +45,7 @@ The yaml description should be defined by:
         fiber_cal_per_gram: 2 #kcal
 ```
 
-## 5. Preload support
+## 5. Preload support (Done)
 
 The pipeline is implemented only with support to "executeDirect" process, i.e. every time a goal is received the pipeline server load into the memory all 
 data from parameter server. This is useful when we need to change the "patient" according to goal request. However, this is redundant when
